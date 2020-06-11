@@ -24,3 +24,6 @@ class CategorySerializers(serializers.ModelSerializer):
         )
         model = Category
 
+
+
+

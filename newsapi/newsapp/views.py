@@ -1,18 +1,19 @@
 from django.shortcuts import render
-from rest_framework import generics
+from rest_framework import generics, permissions
 
 from .models import News
 from .serializers import NewsSerializers
 
-from django.utils.text import slugify
 # Create your views here.
 
 class NewsList(generics.ListCreateAPIView):
+    permission_classes = [permissions.AllowAny,]
     queryset = News.objects.all()
     serializer_class = NewsSerializers
 
 
-class NewsDetail(generics.RetrieveAPIView):
+class NewsDetail(generics.RetrieveUpdateDestroyAPIView):
+    permission_classes = [permissions.AllowAny,]
     queryset = News.objects.all()
     serializer_class = NewsSerializers
 
